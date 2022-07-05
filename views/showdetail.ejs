@@ -1,0 +1,25 @@
+<h1>
+    <%= detail.name%>
+</h1>
+<div class="col">
+    <div class="card shadow-sm">
+        <img src="<%= img.url%>" width="500" class="img-thumbnail">
+        <div class="card-body">
+            <p class="card-text">This is a <%= detail.name%>. He/she is <%= detail.temperament%>
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="col justify-content-between align-items-center">
+                    <p class="lead text-muted">Bred for <%= detail.bred_for%>
+                    </p>
+                    <p class="lead text-muted">Breed group <%= detail.breed_group%>
+                    </p>
+                </div>
+                <div class="col justify-content-between align-items-center">
+                    <small class="text-muted">life span <%= detail.life_span%>.</small>
+                    <small class="text-muted">weight <%= detail.weight.imperial%> lbs, <%= detail.weight.metric%> kg.</small>
+                    <small class="text-muted">height <%= detail.height.imperial%> in, <%= detail.height.metric%> cm.</small>
+                </div>               
+            </div>
+        </div>
+    </div>
+</div>

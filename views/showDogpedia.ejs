@@ -1,0 +1,13 @@
+<h1>All breads</h1>
+<div class="d-flex gap-5 justify-content-center">
+    <ul class="dropdown-menu d-block position-static mx-0 shadow w-220px">
+        <% list.forEach((item)=>{%>
+            <li>
+                <a class="dropdown-item d-flex gap-2 align-items-center" href="/showDogpedia/<%= item.id%>">
+                    <img src="<%= item.image.url%>" width="100" class="img-thumbnail">
+                    <h3 class="h5 mb-1"><%=item.name%></h3>
+                </a>
+            </li>
+        <%})%> 
+    </ul>
+  </div>

@@ -4,10 +4,37 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const layouts = require("express-ejs-layouts");
-const axios = require('axios')
+const axios = require('axios');
+const session = require("express-session"); 
+const mongoose = require( 'mongoose' );
+const MongoDBStore = require('connect-mongodb-session')(session);
 
+
+// *********************************************************** //
+//  Loading routers
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const auth = require('./routes/auth');
+const missingdogs = require('./routes/missingdogs');
+const dogpedia = require('./routes/dogpedia');
+// *********************************************************** //
+// *********************************************************** //
+//  Loading database
+const mongodb_URI = 'mongodb+srv://admin:A1d3m13i9@bzhang.qeg2v.mongodb.net/?retryWrites=true&w=majority'
+mongoose.connect( mongodb_URI, { useNewUrlParser: true, useUnifiedTopology: true } );
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {console.log("we are connected!!!")});
+var store = new MongoDBStore({
+  uri: mongodb_URI,
+  collection: 'mySessions'
+});
+
+// Catch errors
+store.on('error', function(error) {
+  console.log(error);
+});
+// *********************************************************** //
 
 var app = express();
 
@@ -21,26 +48,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
  
-app.use(layouts)
+app.use(layouts);
+// app.use(auth);
+app.use(missingdogs);
+app.use(dogpedia);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.get('/missingDogInfo',
-  (req, res, next) => {
-    res.render('missingDogInfo')
-  })
-
-app.post("/simpleform", (req, res, next) => {
-  // res.json(req.body);
-  const { username, age, height } = req.body;
-  res.locals.username = username;
-  res.locals.age = age;
-  res.locals.ageInDays = age * 365;
-  res.locals.height = height;
-  res.locals.heightCm = height * 2.54;
-  res.locals.version = "1.0.0";
-  res.render("simpleformresult");
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

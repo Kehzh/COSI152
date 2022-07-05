@@ -1,0 +1,39 @@
+<h1>All missing dogs</h1>
+<div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% for (dog of missingdogs){%>
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="<%= dog.image%>" width="500" class="img-thumbnail">
+            <div class="card-body">
+              <p class="card-text">name: <%= dog.name %></p>
+              <p class="card-text">breed: <%= dog.breed %></p>
+              <p class="card-text">location: <%= dog.address %></p>
+              <p class="card-text">date: <%= dog.time %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+<hr>
+<h1>Add your dog</h1>
+<form method="post" action="/showMissingDogs">
+    Date: <input type="date" name="time"><br>
+    name: <input type="text" name="name"><br>
+    Street Address: <input type="text" name="address"><br>
+    Breed: <input type="text" name="breed"><br>
+    image: <input type="text" name="image"><br>
+    <input type="submit">
+</form>
+<a href="/showMissingDogs/clear">clear all</a>
