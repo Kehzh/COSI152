@@ -1,0 +1,26 @@
+<div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm">
+            <img src="<%= dog.image%>" width="500" class="img-thumbnail">
+            <div class="card-body">
+              <p class="card-text">name: <%= dog.name %></p>
+              <p class="card-text">breed: <%= dog.breed %></p>
+              <p class="card-text">location: <%= dog.address %></p>
+              <p class="card-text">date: <%= dog.time %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h1>Add your dog</h1>
+  <form method="post" action="/modify">
+      Date: <input type="date" name="time" value=<%= dog.time %>><br>
+      name: <input type="text" name="name" placeholder=<%= dog.name %> value=<%= dog.name %>><br>
+      Street Address: <input type="text" name="address" placeholder= <%= dog.address %> value=<%= dog.address %>><br>
+      Breed: <input type="text" name="breed" placeholder= <%= dog.breed %> value=<%= dog.breed %>><br>
+      image: <input type="text" name="image" placeholder=<%= dog.image%> value=<%= dog.image%>><br>
+      <input type="submit" title="Make Changes">
+  </form>

@@ -34,9 +34,24 @@ var store = new MongoDBStore({
 store.on('error', function(error) {
   console.log(error);
 });
-// *********************************************************** //
 
+
+
+// *********************************************************** //
 var app = express();
+
+app.use(require('express-session')({
+  secret: 'This is a secret 7f89a789789as789f73j2krklfdslu89fdsjklfds',
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+  },
+  store: store,
+  // Boilerplate options, see:
+  // * https://www.npmjs.com/package/express-session#resave
+  // * https://www.npmjs.com/package/express-session#saveuninitialized
+  resave: true,
+  saveUninitialized: true
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -49,7 +64,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
  
 app.use(layouts);
-// app.use(auth);
+app.use(auth);
 app.use(missingdogs);
 app.use(dogpedia);
 app.use('/', indexRouter);

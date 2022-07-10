@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Find Your Dog</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body class="container">
-    <nav class="py-2 bg-light border-bottom">
-      <div class="container d-flex flex-wrap">
-        <ul class="nav me-auto">
-          <li class="nav-item">
-            <a href="/" class="nav-link link-dark px-2 active" aria-current="page">Home</a>
-          </li>
+
+<head>
+  <title>Find Your Dog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body class="container">
+  <nav class="py-2 bg-light border-bottom">
+    <div class="container d-flex flex-wrap">
+      <ul class="nav me-auto">
+        <li class="nav-item">
+          <a href="/" class="nav-link link-dark px-2 active" aria-current="page">Home</a>
+        </li>
+        <li class="nav-item"></li>
+        <a href="/showDogpedia" class="nav-link link-dark px-2">Encyclopedia</a>
+        <li class="nav-item">
+          <a href="/showMissingDogs" class="nav-link link-dark px-2">Missing Dogs</a>
+        </li>
+      </ul>
+      <ul class="nav">
+        <% if(!loggedIn){ %>
           <li class="nav-item"></li>
-            <a href="/showDogpedia" class="nav-link link-dark px-2">Encyclopedia</a>
-          <li class="nav-item">
-            <a href="/showMissingDogs" class="nav-link link-dark px-2">Missing Dogs</a>
-          </li>
-        </ul>
-        <ul class="nav">
-          <li class="nav-item"></li>
-            <a href="/login" class="nav-link link-dark px-2">Login</a>
+          <a href="/login" class="nav-link link-dark px-2">Login</a>
           <li class="nav-item">
             <a href="/signup" class="nav-link link-dark px-2">Sign Up</a>
           </li>
-        </ul>
-      </div>
-    </nav>
-    <%- body %>
-  </body>
+          <% } else{ %>
+            <li class="nav-item">
+              <a href="/logout" class="nav-link link-dark px-2">Logout</a>
+            </li>
+            <% } %>
+
+      </ul>
+    </div>
+  </nav>
+  <%- body %>
+</body>
+
 </html>

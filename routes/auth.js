@@ -20,8 +20,6 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const User = require('../models/User')
 
-
-
 // This is an example of middleware
 // where we look at a request and process it!
 router.use(function(req, res, next) {
@@ -31,7 +29,7 @@ router.use(function(req, res, next) {
 
 
 router.use((req,res,next) => {
-  if (req.session.username) {
+  if (req.session.username!=null) {
     res.locals.loggedIn = true
     res.locals.username = req.session.username
     res.locals.user = req.session.user
@@ -47,6 +45,9 @@ router.use((req,res,next) => {
 
 router.get("/login", (req,res) => {
   res.render("login")
+})
+router.get("/signup", (req,res) => {
+  res.render("signup")
 })
 
 router.post('/login',
