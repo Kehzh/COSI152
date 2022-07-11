@@ -1,7 +1,7 @@
 # COSI152
 My app is a platform that people who lost their pet can publish information on my app, so more people can be noticed. Also there is a dog's encyclopedia that allows users to loop up different breeds of dogs, and the encyclopedia will return some basic information about the dog. For example, the breed group, the origin country, the temperaments...
 
-What I want to add: To allow the app distinguish different users and make users only able to edit/delete their own posters. I think this can be accomplished by simply add the object Id for each user in MongoDB to each poster.
+**What I want to add:** To allow the app distinguish different users and make users only able to edit/delete their own posters. I think this can be accomplished by simply add the object Id for each user in MongoDB to each poster.
 
 "dependencies": {
     "axios": "^0.27.2",
@@ -17,4 +17,5 @@ What I want to add: To allow the app distinguish different users and make users 
     "mongoose": "^6.4.2",
     "morgan": "~1.9.1"
   }
-here is the link to the video demo of my app: https://drive.google.com/file/d/138N41aSm3wF5ZiIE__LfoWA3WY81FoRv/view?usp=sharing
+  
+Here is the link to the video demo of my app: https://drive.google.com/file/d/138N41aSm3wF5ZiIE__LfoWA3WY81FoRv/view?usp=sharing
